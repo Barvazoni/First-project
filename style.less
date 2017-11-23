@@ -1,0 +1,94 @@
+body {
+    text-align: center;
+    box-sizing: border-box;
+    width: 100%;
+    background-image: url(media/tile.jpg);
+    background-size: cover;
+
+
+}
+
+img {
+    
+}
+
+#taskInput {
+    width: 50%;
+    height: 50%;
+    margin-left: 25%;
+    background-image: url(media/formbg.jpg);
+    background-size: contain;
+    
+    :first-child {
+        margin-top: 3px;
+    }
+    
+    div {
+        width: 75%;
+        margin: 2% 15%;
+    }
+    
+    input {
+        opacity: 0.5;
+        border: 0;
+        
+    }
+    
+    textarea {
+        opacity: 0.5;
+        border: 0;
+        height: 105px;
+    }
+}
+
+#taskBoxes {
+    display: flex;
+}
+
+.taskBox {
+    animation: fadein 2s;
+    width: 200px;
+    height: 230px;
+    background-image: url(media/notebg.png);
+    background-size: cover;
+    margin-left: 25px;
+    padding-top: 20px;
+    padding-left: 10px;
+    
+    @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+    
+    h1 {
+        font-size: 15px;
+        overflow-y: scroll;
+        height: 140px;
+        width: 165px;
+    }
+    
+    p {
+        text-align: left;
+        margin-left: -40px;
+        margin-right: 50px;
+        display: inline;
+        
+    }
+    
+    .glyphicon {
+        opacity: 0;
+    }
+    
+    
+}
+
+.taskBox:hover > .glyphicon {
+        opacity: 1;
+    }
+
+h2 {
+    color: red;
+    font-size: 15px;
+    text-align: left;
+    padding-left: 10px;
+}

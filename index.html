@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet/less" href="style.less">
+</head>
+
+<body id="bodyIdName">
+    <img id="logoImg" src="media/title.png">
+
+    <div id="taskInput" aria-describedby="task">
+        <div class="input-group">
+            <input id="taskTime" type="text" class="form-control" placeholder="Completion time" aria-describedby="task" required>
+            <h2 id="wrongTimeInput"></h2>
+        </div>
+        <div class="input-group">
+            <textarea id="taskInfo" type="text" class="form-control" placeholder="Task info" aria-describedby="task" required></textarea>
+            <h2 id="wrongTaskInput"></h2>
+        </div>
+        <div class="input-group">
+            <button id="taskOk" type="button" class="btn btn-default" aria-describedby="task">Add task</button>
+        </div>
+    </div>
+
+    <div id="taskBoxes">
+        
+        
+    </div>
+
+
+
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
