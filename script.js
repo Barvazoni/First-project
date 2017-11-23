@@ -1,5 +1,9 @@
 'use strict'
 
+const app = {
+    localStorageKey: 'taskJSON'
+}
+
 //Elements
 const bodyId = document.getElementById("bodyIdName");
 const taskDetails = document.getElementById("taskInfo");
@@ -23,13 +27,16 @@ acceptTaskBtn.addEventListener("click", createTask, true);
 
 //bodyId.addEventListener("load", loadTasks());
 
-/*function loadTasks() {
+function loadTasks() {
 
-    for (let i = 1; i < 30; i++) {
-        var b = localStorage.getItem("testJSON" + i);
-        console.log(b);
-        var taskArray = JSON.parse(b);
-        console.log(taskArray);
+    for (let i = 1; i++) {
+        var taskObject = JSON.parse(localStorage.getItem(app.localStorageKey + i));
+        console.log(taskObject);
+        
+        while(taskObject) {
+        var detailsTextnode = document.createTextNode(taskObject.taskDetails);
+        var timeTextnode = document.createTextNode(taskObject.taskEndTime);
+        
         var taskNode = document.createElement("span");
         var detailsNode = document.createElement("h1");
         var timeNode = document.createElement("p");
@@ -39,14 +46,15 @@ acceptTaskBtn.addEventListener("click", createTask, true);
         taskNode.setAttribute("id", "box" + i);
         deleteButton.className = "glyphicon glyphicon-trash";
         
-        detailsNode.appendChild(taskArray[0]);
-        timeNode.appendChild(taskArray[1]);
+        detailsNode.appendChild(detailsTextnode);
+        timeNode.appendChild(timeTextnode);
         taskNode.appendChild(detailsNode);
         taskNode.appendChild(timeNode);
         taskNode.appendChild(deleteButton);
         taskBoxesElement.appendChild(taskNode);
+        }
     }
-}*/
+}
 
     function createTask() {
         var stopFunc = false;
@@ -89,8 +97,11 @@ acceptTaskBtn.addEventListener("click", createTask, true);
                 var detailsTextnode = document.createTextNode(taskDetails.value);
                 var timeTextnode = document.createTextNode(taskEndTime.value);
 
-                let taskArray = [detailsTextnode, timeTextnode, test];
-
+                let taskObject = {
+                taskDetails: taskDetails.value,
+                taskEndTime: taskEndTime.value,
+                test: test
+                }
                 var taskNode = document.createElement("span");
                 var detailsNode = document.createElement("h1");
                 var timeNode = document.createElement("p");
@@ -102,8 +113,8 @@ acceptTaskBtn.addEventListener("click", createTask, true);
 
 
 
-                detailsNode.appendChild(taskDetails.value);
-                timeNode.appendChild(taskEndTime.value);
+                detailsNode.appendChild(detailsTextnode);
+                timeNode.appendChild(timeTextnode);
                 taskNode.appendChild(detailsNode);
                 taskNode.appendChild(timeNode);
                 taskNode.appendChild(deleteButton);
@@ -114,9 +125,9 @@ acceptTaskBtn.addEventListener("click", createTask, true);
                 taskDetails.style.border = 'none';
                 taskError.innerHTML = "";
                 
-                let myJson = JSON.stringify(taskArray);
+                let myJson = JSON.stringify(taskObject);
                 console.log("1" + myJson);
-                localStorage.setItem("taskJSON" + test, myJson);
+                localStorage.setItem(app.localStorageKey + test, myJson);
             }
         }());
     };
